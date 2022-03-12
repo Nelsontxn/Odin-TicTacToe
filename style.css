@@ -1,0 +1,50 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --Pri-color: #629beb;
+    --Sec-color: #FFE6C2;
+}
+
+body{
+    margin:0;
+}
+
+.Main{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--Sec-color);
+    color: var(--Pri-color);
+    display: flex;
+    justify-content: center;
+    flex-direction: row ;
+    align-items: center;
+}
+
+.Header{
+    border: 1px solid black;
+    margin: 2em;
+    
+}
+
+.Title{
+    font-size: 5em;
+}
+
+.restart{
+    width: 175px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: 2px solid var(--Pri-color);
+    transform: all 0.2s ease;
+    cursor: pointer;
+}
+.restart:hover{
+    border: 2px solid var(--Sec-color);
+    color: var(--Sec-color);
+    background-color: var(--Pri-color);
+}
