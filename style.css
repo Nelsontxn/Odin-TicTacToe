@@ -4,6 +4,7 @@
 
 :root{
     --Pri-color: #629beb;
+    --inverse-Pri-color: #A39AFF;
     --Sec-color: #FFE6C2;
 }
 
@@ -20,16 +21,19 @@ body{
     justify-content: center;
     flex-direction: row ;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .Header{
-    border: 1px solid black;
     margin: 2em;
-    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .Title{
-    font-size: 5em;
+    font-size: 2em;
 }
 
 .restart{
@@ -47,4 +51,71 @@ body{
     border: 2px solid var(--Sec-color);
     color: var(--Sec-color);
     background-color: var(--Pri-color);
+}
+
+.game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    margin-right: 1em;
+    max-width: 700px;
+}
+
+.playerOption{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+    width: 100%;
+    /*border-bottom: var(--Pri-color) solid 1px;*/
+}
+
+.playerOption .PlayerX{
+    flex:1;
+    border-bottom: var(--Pri-color) solid 0.2rem;
+}
+
+.PlayerX:hover{
+    color: var(--inverse-Pri-color);
+    border-bottom: var(--inverse-Pri-color) solid 0.2rem;
+}
+.playerOption .PlayerY{
+    flex:1;
+    border-bottom: var(--Pri-color) solid 0.2rem;
+}
+
+.PlayerY:hover{
+    color: var(--inverse-Pri-color);
+    border-bottom: var(--inverse-Pri-color) solid 0.2rem;
+}
+
+.board{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 0px;
+    flex-grow: 1;
+    padding: 10px;
+    width: 675px;
+    height: 315px;
+}
+
+.board-tile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    cursor:pointer;
+}
+
+.board-tile:not(:nth-child(3n)){
+    border-right: var(--Pri-color) solid 0.2rem;
+}
+
+.board-tile:not(:nth-last-child(-n+3)){
+    border-bottom: var(--Pri-color) solid 0.2rem;
+}
+
+.board-tile:hover{
+    background-color: #eee;
 }
