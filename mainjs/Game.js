@@ -1,10 +1,13 @@
 export default class Game{
     constructor() {
-        this.board = new Array(9).fill(null)
-        this.turn = "X"
+        this.board = new Array(9).fill(null);
+        this.turn = "X";
+        this.highlightActivePlayer();
         console.log("Game module loaded.");
     };
 
+
+    //switch players...
     nextTurn(){
         if(this.turn == "X"){
             this.turn = "O"
@@ -14,6 +17,8 @@ export default class Game{
 
     };
 
+
+    //make Move aka press the button
     makeMove(i){
         //check if the game has ended.
         if(this.endOfGame()){
@@ -28,14 +33,19 @@ export default class Game{
 
         this.board[i] = this.turn;
 
+        this.highlightActivePlayer();
+
         this.findWinningCondition();
 
         let winningCombination =this.findWinningCondition();
         if(winningCombination){
             this.nextTurn();
         }
+        
     }
 
+
+    //generic find the winning conditions
     findWinningCondition(){
         const winningCombinations = [
             [0,1,2],
@@ -59,6 +69,7 @@ export default class Game{
     return null;
     }
 
+
     //checks for end game combination if there is a winning combinations
     endOfGame(){
         let winningCombination = this.findWinningCondition();
@@ -67,6 +78,78 @@ export default class Game{
             return true;
         } else{
             return false;
+        }
+    }
+
+
+    //refreshes the board for new game.
+    refreshboard(){
+        this.board = new Array(9).fill(null);
+    }
+
+
+
+    //Some UI stuff to highlight the active player.
+    highlightActivePlayer(){
+        let PlayerXActive = document.querySelector('.PlayerX')
+        let PlayerYActive = document.querySelector('.PlayerY')
+        if(this.turn === "X"){
+            PlayerXActive.classList.add('PlayerActive')
+            PlayerYActive.classList.remove('PlayerActive')
+        }else{
+            PlayerYActive.classList.add('PlayerActive')
+            PlayerXActive.classList.remove('PlayerActive')
+        }
+    }
+
+
+    CheckWhoWins(){
+        let winningCombination = this.findWinningCondition();
+        let checkboardfull = this.CheckArrayfull();
+        console.log('checkboardfull: '+checkboardfull);
+        console.log('winningcombinations' + this.endOfGame())
+        if(checkboardfull){
+            this.WinMessage(false);
+        }
+        if(!winningCombination){
+            return
+        }
+        if(winningCombination){
+            this.WinMessage(true);
+        }
+    }
+
+    WinMessage(Boo){
+        let PopupWinScreen = document.querySelector('.WinningScreen');
+
+        let CreditText = document.querySelector('.CreditText');
+
+        CreditText.textContent = '';
+
+        PopupWinScreen.style.visibility = 'visible';
+
+        if(!Boo){
+            CreditText.textContent = 'it\'s a draw!';
+            
+        }else{
+            CreditText.textContent = `Player ${this.turn} Wins!`;
+        }
+    }
+
+
+    hideWinMesage(){
+        
+        let PopupWinScreen = document.querySelector('.WinningScreen');
+
+        PopupWinScreen.style.visibility = 'hidden';
+    }
+
+
+    CheckArrayfull(){
+        if(this.board.includes(null)){
+            return false;
+        } else{
+            return true;
         }
     }
 }

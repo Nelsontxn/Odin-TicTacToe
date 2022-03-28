@@ -10,7 +10,9 @@ let GameView = new gameView()
 
 let tiles = document.querySelectorAll('.board-tile');
 
-console.log(tiles);
+let restart = document.querySelector('.restart');
+
+let Newgame = document.getElementById('NewgameButton')
 
 tiles.forEach((tile) => {
     tile.addEventListener("click", () =>{
@@ -21,7 +23,24 @@ tiles.forEach((tile) => {
 );
 
 function clickAction(i){
-    game.makeMove(i)
-    GameView.updateBoard(game)
-    game.nextTurn()
+    game.makeMove(i);
+    GameView.updateBoard(game);
+    game.nextTurn();
+    game.CheckWhoWins();
 };
+
+restart.addEventListener("click", () =>{
+
+    console.log('clicked Restart.');
+    game.refreshboard();
+    GameView.updateBoard(game);
+});
+
+Newgame.addEventListener("click", ()=>{
+
+    console.log('clicked New Game!');
+    game.refreshboard();
+    GameView.updateBoard(game);
+    game.hideWinMesage();
+
+})

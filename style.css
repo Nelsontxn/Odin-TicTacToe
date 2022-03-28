@@ -75,16 +75,13 @@ body{
     border-bottom: var(--Pri-color) solid 0.2rem;
 }
 
-.PlayerX:hover{
-    color: var(--inverse-Pri-color);
-    border-bottom: var(--inverse-Pri-color) solid 0.2rem;
-}
+
 .playerOption .PlayerY{
     flex:1;
     border-bottom: var(--Pri-color) solid 0.2rem;
 }
 
-.PlayerY:hover{
+.playerOption > .PlayerActive{
     color: var(--inverse-Pri-color);
     border-bottom: var(--inverse-Pri-color) solid 0.2rem;
 }
@@ -119,3 +116,26 @@ body{
 .board-tile:hover{
     background-color: #eee;
 }
+
+.WinningScreen{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--Sec-color);
+    overflow-x: hidden;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.CreditText{
+    font-size: 3em ;
+    margin-bottom: 2em;
+}
+
