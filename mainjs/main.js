@@ -10,9 +10,13 @@ let GameView = new gameView()
 
 let tiles = document.querySelectorAll('.board-tile');
 
-let restart = document.querySelector('.restart');
+let Retry = document.getElementById('Retry')
 
 let Newgame = document.getElementById('NewgameButton')
+
+let PvP = document.getElementById('Versus');
+
+let PvAI = document.getElementById('VsAI');
 
 tiles.forEach((tile) => {
     tile.addEventListener("click", () =>{
@@ -29,7 +33,7 @@ function clickAction(i){
     game.CheckWhoWins();
 };
 
-restart.addEventListener("click", () =>{
+Retry.addEventListener("click", () =>{
 
     console.log('clicked Restart.');
     game.refreshboard();
@@ -43,4 +47,39 @@ Newgame.addEventListener("click", ()=>{
     GameView.updateBoard(game);
     game.hideWinMesage();
 
-})
+});
+
+
+PvP.addEventListener("click", ()=>{
+    if(game.GameMode == "PvP"){
+        return
+    }
+
+
+    game.refreshboard();
+    GameView.updateBoard(game);
+    game.SwitchGamemode();
+    console.log(`Game Mode: ${game.GameMode}`)
+    PvP.classList.remove('restart');
+    PvP.classList.add('toggleModeBtn');
+    PvAI.classList.remove('toggleModeBtn');
+    PvAI.classList.add('restart');
+});
+
+
+
+PvAI.addEventListener("click", ()=>{
+    if(game.GameMode == "VsAI"){
+        return
+    }
+
+
+    game.refreshboard();
+    GameView.updateBoard(game);
+    game.SwitchGamemode();
+    console.log(`Game Mode: ${game.GameMode}`)
+    PvAI.classList.remove('restart');
+    PvAI.classList.add('toggleModeBtn');
+    PvP.classList.remove('toggleModeBtn');
+    PvP.classList.add('restart');
+});

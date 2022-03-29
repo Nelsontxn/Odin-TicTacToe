@@ -34,6 +34,7 @@ body{
 
 .Title{
     font-size: 2em;
+    margin-bottom: 0.2rem;
 }
 
 .restart{
@@ -46,11 +47,27 @@ body{
     border: 2px solid var(--Pri-color);
     transform: all 0.2s ease;
     cursor: pointer;
+    margin: 10px;
 }
 .restart:hover{
     border: 2px solid var(--Sec-color);
     color: var(--Sec-color);
     background-color: var(--Pri-color);
+}
+
+.toggleModeBtn{
+    width: 175px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: 2px solid var(--Sec-color);
+    color: var(--Sec-color);
+    background-color: var(--Pri-color);
+    transform: all 0.2s ease;
+    cursor: pointer;
+    margin: 10px;
 }
 
 .game{

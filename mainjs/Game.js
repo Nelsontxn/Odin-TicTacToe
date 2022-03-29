@@ -2,8 +2,20 @@ export default class Game{
     constructor() {
         this.board = new Array(9).fill(null);
         this.turn = "X";
+        this.GameMode = "PvP";
         this.highlightActivePlayer();
         console.log("Game module loaded.");
+    };
+
+
+    //Switch Gamemode
+    SwitchGamemode(){
+        if(this.GameMode == "PvP"){
+            this.GameMode = "VsAI"
+        } else{
+            this.GameMode = 'PvP'
+        };
+        
     };
 
 
@@ -85,6 +97,8 @@ export default class Game{
     //refreshes the board for new game.
     refreshboard(){
         this.board = new Array(9).fill(null);
+        this.turn = "X";
+        this.highlightActivePlayer();
     }
 
 
@@ -138,7 +152,7 @@ export default class Game{
 
 
     hideWinMesage(){
-        
+
         let PopupWinScreen = document.querySelector('.WinningScreen');
 
         PopupWinScreen.style.visibility = 'hidden';
