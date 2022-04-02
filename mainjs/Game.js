@@ -9,6 +9,12 @@ export default class Game {
     console.log("Game module loaded.");
   }
 
+
+  //Default Gamemode
+  DefaultGamemode(){
+      this.GameMode = "PvP";
+  }
+
   //Switch Gamemode
   SwitchGamemode() {
     if (this.GameMode == "PvP") {

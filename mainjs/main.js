@@ -49,6 +49,11 @@ Retry.addEventListener("click", () =>{
     console.log('clicked Restart.');
     game.refreshboard();
     GameView.updateBoard(game);
+    game.DefaultGamemode();
+    PvP.classList.remove('restart');
+    PvP.classList.add('toggleModeBtn');
+    PvAI.classList.remove('toggleModeBtn');
+    PvAI.classList.add('restart');
 });
 
 Newgame.addEventListener("click", ()=>{
