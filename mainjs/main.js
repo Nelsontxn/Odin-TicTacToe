@@ -31,7 +31,18 @@ function clickAction(i){
     GameView.updateBoard(game);
     game.nextTurn();
     game.CheckWhoWins();
+    AIPlaysAMove();
 };
+
+function AIPlaysAMove(){
+    if(game.GameMode == "VsAI"){
+        console.log("AIPlaysMove")
+        game.CheckIfGameModeIsBots();
+        GameView.updateBoard(game);
+        game.CheckWhoWins();
+        game.nextTurn();
+    }
+}
 
 Retry.addEventListener("click", () =>{
 
